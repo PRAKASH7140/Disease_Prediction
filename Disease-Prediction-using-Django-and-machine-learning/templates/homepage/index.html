@@ -1,0 +1,67 @@
+﻿{% extends 'basic.html' %}
+{% load static %}
+
+{% block head %}
+  <style>
+    .jumbotron {
+      background: white;
+      padding: 50px;
+      text-align: center;
+      border-radius: 10px;
+    }
+   
+    .modal-content {
+      border-radius: 10px;
+    }
+    .img {
+      width: 200px;
+      height: auto;
+      transition: transform 0.3s;
+      overflow: hidden;
+    }
+    .img:hover {
+      transform: scale(1.1);
+    }
+    .card {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <div class="jumbotron">
+      <h1 class="display-4">Be Your Own Doctor...</h1>
+      <p class="lead">Need medical guidance anytime, anywhere? Our Disease Prediction System offers instant insights based on your symptoms.</p>
+      {% if not user.is_authenticated %}
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">Get Started</button>
+      {% endif %}
+      {% comment %} <div class="container mt-5 text-center">
+        <h2>Sign In As</h2>
+        <div class="row justify-content-center mt-4">
+          <div class="col-md-3">
+            <a href="{% url 'sign_in_admin' %}">  <button class="btn btn-primary btn-lg">Admin</button></a>
+          </div>
+          <div class="col-md-3">
+            <a href="{% url 'sign_in_doctor' %}">  <button class="btn btn-primary btn-lg">Doctor</button></a>
+          </div>
+          <div class="col-md-3">
+            <a href="{% url 'sign_in_patient' %}">  <button class="btn btn-primary btn-lg">Patient</button></a>
+          </div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="card mt-5">
+    <p>Be Your Own Doctor</p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}

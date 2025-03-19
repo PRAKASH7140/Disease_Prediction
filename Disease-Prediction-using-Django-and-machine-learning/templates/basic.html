@@ -1,0 +1,518 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'homepage/bootstrap/css/bootstrap.min.css' %}" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'homepage/css.css' %}" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <title>PREDICO</title>
+
+    <style>
+      /* Your Custom Body CSS */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif; /* Modern font */
+        background-color:rgb(94, 93, 93); /* Dark background */
+        line-height: 1.6;
+        min-height: 100vh; /* Full viewport height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: black;
+      }
+      
+      /* Simulated Particle Effects */
+      body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10.01%);
+        background-size: 20px 20px;
+        animation: particles 5s linear infinite;
+        z-index: -1;
+      }
+      
+      @keyframes particles {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-20px);
+        }
+      }
+       /* Glowing Border Effect */
+       body::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: linear-gradient(45deg, #00ffcc, #ff00cc, #00ffcc);
+        background-size: 400% 400%;
+        z-index: -2;
+        filter: blur(20px);
+        opacity: 0.3;
+        animation: glow 10s ease infinite;
+      }
+
+      
+      @keyframes glow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+      /* Smooth Scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        body {
+          padding: 20px;
+        }
+      
+        body::before {
+          background-size: 15px 15px; /* Smaller particles for mobile */
+        }
+      }
+      
+      /* Navbar Styles */
+      .navbar {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00ffcc !important;
+      }
+      
+      .navbar-nav .nav-link {
+        color: #fff !important;
+        font-size: 1rem;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+      
+      .navbar-nav .nav-link:hover {
+        color: #00ffcc !important;
+      }
+      
+      /* Header Styles */
+      .page-header {
+        text-align: center;
+        margin: 20px 0;
+      }
+      
+      .page-header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #00ffcc;
+        text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+      
+      .page-header h6 {
+        font-size: 1.2rem;
+        color: #ccc;
+      }
+      
+      /* Modal Styles */
+      .modal-content {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        color: #fff;
+      }
+      
+      .modal-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .modal-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .modal-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00ffcc;
+      }
+      
+      .modal-body {
+        padding: 20px;
+      }
+      
+      .modal-body img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 10px;
+        transition: transform 0.3s ease;
+      }
+      
+      .modal-body img:hover {
+        transform: scale(1.1);
+      }
+      
+      /* Button Styles */
+      
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      
+      .btn-danger {
+        background: linear-gradient(135deg, #ff4d4d, #cc0000);
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .btn-danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 2rem;
+        }
+      
+        .page-header h6 {
+          font-size: 1rem;
+        }
+      
+        .navbar-nav .nav-link {
+          font-size: 0.9rem;
+        }
+      
+        .modal-body img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+      /* Custom Logout Button */
+      .custom-logout-btn {
+        background: linear-gradient(135deg, #ff4d4d, #cc0000);
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .custom-logout-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Custom Modal */
+      .custom-modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .custom-modal-content {
+        background: rgba(0, 0, 0, 0.9); /* Dark background */
+        backdrop-filter: blur(10px); /* Blur effect */
+        border-radius: 10px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        width: 300px; /* Adjust width as needed */
+        padding: 20px;
+      }
+      
+      .custom-modal-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .custom-modal-header h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #00ffcc;
+        margin: 0;
+      }
+      
+      .custom-modal-body {
+        padding: 10px 0;
+        text-align: center;
+        font-size: 1rem;
+        color: #e0e0e0;
+      }
+      
+      .custom-modal-body i {
+        color: #00ffcc;
+        margin-right: 10px;
+      }
+      
+      .custom-modal-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 10px;
+        text-align: center;
+      }
+      
+      .custom-modal-logout-btn {
+        background: linear-gradient(135deg, #00ffcc, #00b3b3);
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .custom-modal-logout-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      
+      .custom-modal-close-btn {
+        background: linear-gradient(135deg, #ff4d4d, #cc0000);
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .custom-modal-close-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Get references to the modal and buttons
+        const logoutBtn = document.getElementById('custom-logout-btn')
+        const logoutModal = document.getElementById('custom-logout-modal')
+        const closeBtn = document.getElementById('custom-modal-close-btn')
+      
+        if (logoutBtn && logoutModal && closeBtn) {
+          // Function to open the modal
+          logoutBtn.addEventListener('click', () => {
+            logoutModal.style.display = 'flex' // Show the modal
+          })
+      
+          // Function to close the modal
+          closeBtn.addEventListener('click', () => {
+            logoutModal.style.display = 'none' // Hide the modal
+          })
+      
+          // Close the modal if the user clicks outside the modal content
+          window.addEventListener('click', (event) => {
+            if (event.target === logoutModal) {
+              logoutModal.style.display = 'none' // Hide the modal
+            }
+          })
+        }
+      })
+    </script>
+
+    {% block head %}
+
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!-- Page Header -->
+      <div class="page-header mt-4 mb-4">
+        <h1>PREDICO</h1>
+        <h6>Be Your Own Doctor</h6>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">PREDICO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Contact</a>
+            </li>
+
+            {% if user.is_authenticated %}
+              {% if user.patient %}
+                <li class="nav-item ml-2">
+                  <span class="nav-link" style="color: #00ffcc;">Hello, {{ user.patient.name }}</span>
+                </li>
+                <li class="nav-item ml-2">
+                  <a class="nav-link" href="{% url 'patient_ui' %}">Profile</a>
+                </li>
+              {% endif %}
+
+              {% if user.doctor %}
+                <li class="nav-item ml-2">
+                  <span class="nav-link" style="color: #00ffcc;">Hello, Dr. {{ user.doctor.name }}</span>
+                </li>
+                <li class="nav-item ml-2">
+                  <a class="nav-link" href="{% url 'doctor_ui' %}">Profile</a>
+                </li>
+              {% endif %}
+
+              {% if user.is_superuser %}
+                <li class="nav-item ml-2">
+                  <span class="nav-link" style="color: #00ffcc;">Admin: {{ user.username }}</span>
+                </li>
+                <li class="nav-item ml-2">
+                  <a class="nav-link" href="{% url 'admin_ui' %}">Profile</a>
+                </li>
+              {% endif %}
+
+              <!-- Logout Button -->
+              <li class="nav-item ml-2">
+                <button class="custom-logout-btn" id="custom-logout-btn">Logout</button>
+              </li>
+
+              <!-- Custom Logout Modal -->
+              <div class="custom-modal" id="custom-logout-modal">
+                <div class="custom-modal-content">
+                  <div class="custom-modal-header">
+                    <h4>Logout <i class="fas fa-sign-out-alt"></i></h4>
+                  </div>
+                  <div class="custom-modal-body">
+                    <i class="fas fa-question-circle"></i>
+                    <span style="color: #00ffcc;">{{ user.patient.name }}</span>, Are you sure you want to log out?
+                  </div>
+                  <div class="custom-modal-footer">
+                    <a href="{% url 'logout' %}" class="custom-modal-logout-btn">Logout</a>
+                    <button class="custom-modal-close-btn" id="custom-modal-close-btn">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <li class="nav-item ml-2">
+                <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg2">Signup</a>
+              </li>
+              <li class="nav-item ml-2">
+                <a class="nav-link" data-toggle="modal" data-target=".bd-example-modal-lg">Signin</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Sign-In Modal -->
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <center>
+              <h1>Sign-In As</h1>
+            </center>
+            <br /><br />
+            <center>
+              <form>
+                <div class="container mt-5 mb-5">
+                  <div class="row">
+                    <div class="col">
+                      <a href="{% url 'sign_in_admin' %}"><img alt="admin" src="{% static 'homepage/admin.png' %}" class="img" /></a>
+                    </div>
+                    <div class="col">
+                      <a href="{% url 'sign_in_doctor' %}"><img alt="doctor" src="{% static 'homepage/doctor.png' %}" class="img" /></a>
+                    </div>
+                    <div class="col">
+                      <a href="{% url 'sign_in_patient' %}"><img alt="patient" src="{% static 'homepage/patient.png' %}" class="img" /></a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </center>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <center>
+              <h1>Sign-up</h1>
+            </center>
+            <br /><br />
+            <center>
+              <form>
+                <div class="container mt-5 mb-5">
+                  <div class="row">
+                  
+                    <div class="col">
+                      <a href="{% url 'signup_doctor' %}"><img alt="doctor" src="{% static 'homepage/doctor.png' %}" class="img" /></a>
+                    </div>
+                    <div class="col">
+                      <a href="{% url 'signup_patient' %}"><img alt="patient" src="{% static 'homepage/patient.png' %}" class="img" /></a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </center>
+          </div>
+        </div>
+      </div>
+
+      {% block body %}
+
+      {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
